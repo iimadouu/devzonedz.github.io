@@ -150,10 +150,10 @@ export default function QuoteForm({ onClose }: { onClose: () => void }) {
     // Use Vercel serverless function in production, local server in development
     const API_URL = import.meta.env.PROD 
       ? '/api/quote' 
-      : import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001`;
+      : import.meta.env.VITE_API_URL || `http://${window.location.hostname}:3001/api/quote`;
 
     try {
-      const response = await fetch(`${API_URL}${import.meta.env.PROD ? '' : '/api/quote'}`, {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
